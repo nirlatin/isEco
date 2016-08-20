@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<a href="../../" class="form-bottom" style="float:left" role="button">Home </a>
+
+<h1><%= title %></h1>
+<p>Secure payment ( paypal )</p>
+<div class="form-wrapper">
+    <form id="checkout-form" name="checkout-form">
+        <div class="form-row">
+            <label for="firstName">First name:</label>
+            <input type="text" name="firstName" id="firstName" required/>
+        </div>
+        <div class="form-row">
+            <label for="lastName">Last name:</label>
+            <input type="text" name="lastName" id="lastName" />
+        </div>
+        <div class="form-row">
+            <label for="email">Email:</label>
+            <input type="email" name="email" id="email" required/>
+        </div>
+        <div class="form-row">
+            <label for="country">Country:</label>
+            <select for="country" type="text" name="country" id="country">
+                <label>Country</label>
+                <% countries.forEach(function(country){ %>
+                <option value="<%= country.key %>"><%= country.value %></option>
+                <% }) %>
+            </select>
+        </div>
+        <div class="form-row">
+            <input type="submit" class="form-bottom"/>
+        </div>
+    </form>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script src="/js/bundle.js"></script>
+
+</body>
+</html>

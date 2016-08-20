@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title> Users </title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<h1>Users</h1>
+<table style="width:80%; background-color: #7f7f7f;  margin: 0 auto;">
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+    </tr>
+    <% users.forEach(function(user) { %>
+        <td><%= user.id %></td>
+        <td><%= user.firstName  + " " + user.lastName%></td>
+    </tr>
+    <% }); %>
+</table>
+</body>
+</html>
