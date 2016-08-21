@@ -28,8 +28,8 @@ module.exports = class Order {
             self.getByToken(token, callback);
         }, function (order, callback) {
             self.setData(order);
-            console.log(order);
             self.status = order.status;
+            self.token = order.token;
             callback(null);
         }], function (err) {
             if (err)
@@ -53,9 +53,10 @@ module.exports = class Order {
     }
 
     _updateStatus(status, cb) {
-        OrderScheme.update({id: this.id}, {$set: {status: status}}, function (err, order) {
+        OrderScheme.update({token: this.token}, {$set: {status: status}}, function (err, order) {
             if (err)
                 throw  err;
+            console.log(order);
             return cb(null, order);
         });
     }
