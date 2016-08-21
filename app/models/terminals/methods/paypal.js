@@ -7,10 +7,10 @@ module.exports = class Paypal extends Base {
     }
 
     request(req) {
-       //req.
+        //request data unique
     }
 
-    create( cb) {
+    create(cb) {
         //call paypal create method
         //return token
         var token = randomstring.generate({
@@ -20,16 +20,24 @@ module.exports = class Paypal extends Base {
         cb(null, {token: token});
     }
 
-    success(data) {
-
+    success(cb) {
+        this.order.success(function (err,order) {
+            if (err)
+                return cb(err);
+            return cb(null)
+        })
     }
 
     validate() {
 
     }
 
-    failed(data) {
-
+    failed(cb) {
+        this.order.failed(function (err) {
+            if (err)
+                return cb(err);
+            return cb(null)
+        })
     }
 
 }

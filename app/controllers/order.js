@@ -51,24 +51,21 @@ exports.success = function (req, res, next) {
         order.initByToken(token, function (err) {
             if (err)
                 return callback(err);
-            console.log("RET");
             return callback(null);
         });
     }, function (callback) {
+        console.log(order);
+        console.log("PENDING");
         if (order.status != "PENDING")
             return callback("ORDER_STATUS_INVALID");
-        order.success(function (err) {
-            if (err)
-                return callback(err);
-            return callback(null)
-        })
+        else
+            return callback(null);
     }, function (callback) {
         var terminal = TerminalFactory.getMethod(order.paymentMethod);
-        terminal.init(order.dataMethod);
+        terminal.init(order);
         terminal.request(req);
         terminal.validate();
-        terminal.success();
-        callback(null);
+        terminal.success(callback);
     }], function (err) {
         if (err)
             return next(err);
@@ -91,18 +88,13 @@ exports.failed = function (req, res, next) {
     }, function (callback) {
         if (order.status != "PENDING")
             return callback("ORDER_STATUS_INVALID");
-        order.failed(function (err) {
-            if (err)
-                return callback(err);
-            return callback(null)
-        })
+        return callback(null)
     }, function (callback) {
         var terminal = TerminalFactory.getMethod(order.paymentMethod);
-        terminal.init(order.dataMethod);
+        terminal.init(order);
         terminal.request(req);
         terminal.validate();
-        terminal.failed();
-        callback(null);
+        terminal.failed(callback);
     }], function (err) {
         if (err)
             return next(err);
