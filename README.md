@@ -6,18 +6,18 @@ The project was written using nodejs and es6 in server side and client side in b
 
 ### Prerequisities && Installing
 
- install node.js v6+ (support 6th Edition - ECMAScript 2015):
- 1. Open link: https://nodejs.org/en/download/current/
- 2. Download
- 3. Install
- 4. Check if install success by write command on cmd "node -v"
+install node.js v6+ (support 6th Edition - ECMAScript 2015):
+1. Open link: https://nodejs.org/en/download/current/
+2. Download
+3. Install
+4. Check if install success by run "node -v" command. 
 
- install & run mongoDb:
+install & run mongoDb:
 1. open link: https://docs.mongodb.com/manual/tutorial/
 2. choose the installation mongoDb by your OS.
 3. install & run
 
- windows example:
+windows example:
 1. Download mongoDb
 2. Install
 3. Follow after the Instructions.
